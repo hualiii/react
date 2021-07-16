@@ -1,0 +1,57 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-07-16 10:07:17
+ * @LastEditTime: 2021-07-16 10:41:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /React/React基础入门/1.2react_jsx.html
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hello react</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    .cadetblue {
+      color: cadetblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script type="text/babel">
+    const name = "jack";
+    const age = 18;
+    const VDom = (
+      <div>
+        <h1 className="cadetblue"> my name is {name}, i am {age} years old.</h1 >
+        <p style={{ color: "white", backgroundColor: "black" }}>hello react!</p>
+      </div>
+    );
+    ReactDOM.render(VDom, document.getElementById("app"))
+    /**
+      jsx 语法规则:
+      1.定义虚拟DOM()
+      2.标签插入js表达式使用{}
+      3.样式的类名class----> className
+      4.内联样式{{}} 小驼峰式命名
+      5.虚拟DOM只要一个根标签
+      6.标签必须闭合
+      7.标签首字母
+        a.小写字母,转为html同名标签
+        b.大写字母.转为react组件标签
+  */
+  </script>
+</body>
+
+</html>
