@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react state 的理解</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    isHot: false
+                }
+            }
+            render() {
+                return (
+                    <h1 onClick={demo}>今天天气很{this.state.isHot ? "炎热" : "凉爽"}！</h1>
+                )
+            }
+        }
+        ReactDOM.render(<Weather />, document.getElementById("app"))
+        function demo() {
+            console.log("h1 is click..")
+        }
+    </script>
+</body>
+
+</html>
