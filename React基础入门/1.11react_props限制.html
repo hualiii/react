@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.js"></script>
 </head>
 
 <body>
@@ -26,16 +27,23 @@
         )
       }
     }
+    Person.propTypes = {
+      name: PropTypes.string.isRequired,
+      sex: PropTypes.string,
+      age: PropTypes.number,
+    }
+    Person.defaultProps = {
+      sex: "男",
+      age: 19
+    }
     let p4 = {
       name: "jay",
-      age: 34,
-      sex: "男"
     }
     const template = (
       <div>
-        <Person name="tom" age="19" sex="男" />
-        <Person name="jack" age="18" sex="男" />
-        <Person name="merry" age="20" sex="女" />
+        <Person name="tom" age={18} sex="男" />
+        <Person name="jack" age={19} sex="男" />
+        <Person name="merry" age={20} sex="女" />
         <Person {...p4} />
       </div>
     )
