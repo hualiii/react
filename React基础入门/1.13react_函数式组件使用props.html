@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>react 函数式组件使用props</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    function Person(props) {
+      const {name,age,sex} = props
+      return (
+        <ul>
+          <li>name:{name}</li>
+          <li>age:{age}</li>
+          <li>sex:{sex}</li>
+        </ul>
+      )
+    }
+    Person.propTypes = {
+      name: PropTypes.string.isRequired,
+      age: PropTypes.number,
+      sex: PropTypes.string
+    }
+    Person.defaultProps = {
+      age:18,
+      sex:"male"
+    }
+    let p1 = {
+      name:"tom"
+    }
+    const template = (
+      <div>
+        <Person name="merry" age={22} sex="female"/> 
+        <Person {...p1}/> 
+      </div>
+    )
+    ReactDOM.render(template,document.getElementById("app"))
+  </script>
+</body>
+
+</html>

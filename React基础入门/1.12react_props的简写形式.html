@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,43 +11,45 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.js"></script>
 </head>
+
 <body>
   <div id="app"></div>
   <script type="text/babel">
     class Person extends React.Component {
       static propTypes = {
         name: PropTypes.string.isRequired,
-        age:PropTypes.number,
-        sex:PropTypes.string
+        age: PropTypes.number,
+        sex: PropTypes.string
       }
       static defaultProps = {
-        age:18,
-        sex:"male"
+        age: 18,
+        sex: "male"
       }
-      render(){
-        const {name,age,sex} = this.props
+      render() {
+        const { name, age, sex } = this.props
         return (
           <ul>
             <li>name:{name}</li>
-            <li>age:{age+1}</li>
-            <li>sex:{sex}</li>  
+            <li>age:{age + 1}</li>
+            <li>sex:{sex}</li>
           </ul>
         )
       }
     }
     let person = {
-      name:"tom",
-      age:13,
-      sex:"male"
+      name: "tom",
+      age: 13,
+      sex: "male"
     }
     const template = (
       <div>
-        <Person name="jack" age={19} sex="male"/>  
-        <Person name="merry" age={19} sex="female"/>  
-        <Person {...person}/>
+        <Person name="jack" age={19} sex="male" />
+        <Person name="merry" age={19} sex="female" />
+        <Person {...person} />
       </div>
     )
-    ReactDOM.render(template,document.getElementById("app"))
+    ReactDOM.render(template, document.getElementById("app"))
   </script>
 </body>
+
 </html>
