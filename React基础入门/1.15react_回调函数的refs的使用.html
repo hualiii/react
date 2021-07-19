@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>react_回调函数refs的基本使用</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      showMessage1 = () => {
+        const { input1 } = this
+        alert(input1.value)
+      }
+      showMessage2 = () => {
+        const { input2 } = this
+        alert(input2.value)
+      }
+      render() {
+        return (
+          <div>
+            <input ref={c => this.input1 = c} type="text" placeholder="请点击按钮" />
+            <button onClick={this.showMessage1}>click show message</button>
+            <input onBlur={this.showMessage2} ref={c => this.input2 = c}  type="text" placeholder="请失去焦点" />
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<MyComponent />, document.getElementById("app"))
+  </script>
+</body>
+
+</html>
