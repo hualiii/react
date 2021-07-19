@@ -26,11 +26,17 @@
         )
       }
     }
+    let p4 = {
+      name: "jay",
+      age: 34,
+      sex: "男"
+    }
     const template = (
       <div>
         <Person name="tom" age="19" sex="男" />
         <Person name="jack" age="18" sex="男" />
         <Person name="merry" age="20" sex="女" />
+        <Person {...p4} />
       </div>
     )
     ReactDOM.render(template, document.getElementById("app"))
