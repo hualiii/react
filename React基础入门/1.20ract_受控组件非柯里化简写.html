@@ -24,19 +24,17 @@
         const { username, password } = this.state
         alert(`username:${username},password:${password}`)
       }
-      saveFormData = (dataType) => {
-        return (e) => {
-          this.setState({
-            [dataType]: e.target.value
+      saveFormData = (dataType, event) => {
+        this.setState({
+            [dataType]: event.target.value
           })
-        }
       }
       render() {
         return (
           <div>
             <form onSubmit={this.showMessage}>
-              <input onChange={this.saveFormData("username")} type="text" placeholder="username" />
-              <input onChange={this.saveFormData("password")} type="password" placeholder="password" />
+              <input onChange={e => this.saveFormData("username", e)} type="text" placeholder="username" />
+              <input onChange={e => this.saveFormData("password", e)} type="password" placeholder="password" />
               <button>submit</button>
             </form>
           </div>
