@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>react_表单非受控组件</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+  <script type="text/babel">
+    class Login extends React.Component {
+      showMessage = (event) => {
+        event.preventDefault()
+        const { username, password } = this
+        alert(`username:${username.value},password:${password.value}`)
+      }
+      render() {
+        return (
+          <div>
+            <form onSubmit={this.showMessage}>
+              <input type="text" placeholder="username" ref={c => this.username = c} />
+              <input type="password" placeholder="password" ref={c => this.password = c} />
+              <button>submit</button>
+            </form>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Login />, document.getElementById("app"))
+  </script>
+</body>
+
+</html>
