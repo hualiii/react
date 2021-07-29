@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件生命周期钩子函数</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+    class Parent extends React.Component{
+        render(){
+            return (
+                <div>
+                    <div>这是父组件</div>
+                    <button onClick={this.changeCar}>换车</button>
+                    <hr/>
+                    <Child car={this.state.car}></Child>
+                </div>
+            )
+        }
+        state = {
+            car:"奔驰"
+        }
+        changeCar = ()=>{
+            this.setState({
+                car:"宝马"
+            })
+        }
+    }
+    class Child extends React.Component{
+        componentWillReceiveProps(){
+            console.log("Child---componentWillReceiveProps")
+        }
+        render() {
+            return (
+                <div>
+                    <div>这是子组件</div>
+                    <div>这是父组件传来的车:{this.props.car}</div>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Parent/>,document.getElementById("app"))
+</script>
+</body>
+</html>
