@@ -1,0 +1,9 @@
+.title{
+  background: cadetblue;
+}
+.title .name{
+  color: firebrick;
+}
+div .demo{
+  display: block;
+}
