@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import store from "../../Redux/store";
+import {createAdd,createSub,createAsyncAdd} from "../../Redux/count_action";
 class Index extends Component {
     state = {
         value: 1,
@@ -13,27 +14,31 @@ class Index extends Component {
     }
     add = () => {
         let {value} = this.state;
-        this.props.add(value)
+        store.dispatch(createAdd(value*1))
     }
     sub = () => {
         let {value} = this.state;
-        this.props.sub(value)
+        store.dispatch(createSub(value*1))
     }
     addOdd = () => {
         let {value} = this.state;
         if (value * 1 % 2 !== 0) {
-            this.props.add(value)
+            store.dispatch(createAdd(value*1))
         }
     }
     addAsync = () => {
         let {value} = this.state;
-        this.props.addAsync(value,500)
+        store.dispatch(createAsyncAdd(value*1,500))
     }
-
+    componentDidMount(){
+        store.subscribe(()=>{
+            this.setState({})
+        })
+    }
     render() {
         return (
             <div>
-                <h1>当前求和值: {this.props.count} </h1>
+                <h1>当前求和值:{store.getState()} </h1>
                 <select value={this.state.value} onChange={this.saveValue}>
                     <option value="1">1</option>
                     <option value="2">2</option>
