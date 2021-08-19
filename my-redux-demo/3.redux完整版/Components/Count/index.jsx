@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import store from "../../Redux/store";
-import {createAdd,createSub,createAsyncAdd} from "../../Redux/count_action";
+import {createAdd,createSub} from "../../Redux/count_action";
 class Index extends Component {
     state = {
         value: 1,
@@ -28,7 +28,9 @@ class Index extends Component {
     }
     addAsync = () => {
         let {value} = this.state;
-        store.dispatch(createAsyncAdd(value*1,500))
+        setTimeout(() => {
+            store.dispatch(createSub(value*1))
+        }, 1000)
     }
     componentDidMount(){
         store.subscribe(()=>{
