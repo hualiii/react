@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import store from "../../Redux/store";
 
 class Index extends Component {
     state = {
@@ -14,46 +13,38 @@ class Index extends Component {
         event.preventDefault();
     }
     add = () => {
-        let {value} = this.state;
-        store.dispatch({
-            type: "add",
-            data: value * 1
+        let {count, value} = this.state;
+        this.setState({
+            count: count + value * 1
         })
     }
     sub = () => {
-        let {value} = this.state;
-        store.dispatch({
-            type: "sub",
-            data: value * 1
+        let {count, value} = this.state;
+        this.setState({
+            count: count - value * 1
         })
     }
     addOdd = () => {
-        let {value} = this.state;
-        if (value * 1 % 2 !== 0) {
-            store.dispatch({
-                type: "sub",
-                data: value * 1
+        let {count, value} = this.state;
+        if (value*1 % 2 !== 0) {
+            this.setState({
+                count: count + value * 1
             })
         }
     }
     addAsync = () => {
-        let {value} = this.state;
+        let {count, value} = this.state;
         setTimeout(() => {
-            store.dispatch({
-                type: "sub",
-                data: value * 1
+            this.setState({
+                count: count + value * 1
             })
         }, 1000)
     }
-    componentDidMount(){
-        store.subscribe(()=>{
-            this.setState({})
-        })
-    }
+
     render() {
         return (
             <div>
-                <h1>当前求和值:{store.getState()} </h1>
+                <h1>当前求和值:{this.state.count} </h1>
                 <select value={this.state.value} onChange={this.saveValue}>
                     <option value="1">1</option>
                     <option value="2">2</option>
