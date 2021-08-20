@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import store from "../../Redux/store";
-import {createAddPerson} from "../../Redux/actions/persons";
+import {connect} from "react-redux";
+import {createAddPersonAction} from "../../Redux/actions/persons";
 
-class Index extends Component {
+class Person extends Component {
     addPerson = () => {
         let name = this.name.value;
         let age = this.age.value;
-        store.dispatch(createAddPerson({name, age}))
+        this.props.add({name, age})
     }
 
     render() {
@@ -20,12 +20,8 @@ class Index extends Component {
                 <br/>
                 <ul>
                     {
-                        store.getState().person.map((item, index) => {
-                            return (
-                                <li key={index}>
-                                    name:{item.name};age:{item.age}
-                                </li>
-                            )
+                        this.props.person.map((item, index) => {
+                            return (<li key={index}>name:{item.name};age:{item.age}</li>)
                         })
                     }
                 </ul>
@@ -34,4 +30,4 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default connect(state => ({person: state.person}), {add: createAddPersonAction})(Person);

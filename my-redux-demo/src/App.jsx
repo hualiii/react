@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Count from "./Container/Count";
-import Person from "./Components/Preson";
+import Person from "./Container/Person";
 
 class App extends Component {
     render() {
