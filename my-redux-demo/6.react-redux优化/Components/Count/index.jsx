@@ -1,8 +1,6 @@
-import {connect} from "react-redux";
 import React, {Component} from 'react';
-import {createAdd, createSub, createAsyncAdd} from "../../Redux/actions/count"
 
-class CountUI extends Component {
+class Index extends Component {
     state = {
         value: 1,
     }
@@ -29,7 +27,7 @@ class CountUI extends Component {
     }
     addAsync = () => {
         let {value} = this.state;
-        this.props.addAsync(value, 500)
+        this.props.addAsync(value,500)
     }
 
     render() {
@@ -50,10 +48,4 @@ class CountUI extends Component {
     }
 }
 
-const countContainer = connect(state => ({count: state.count}), {
-    add: createAdd,
-    sub: createSub,
-    addAsync: createAsyncAdd
-})(CountUI);
-
-export default countContainer;
+export default Index;

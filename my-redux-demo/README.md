@@ -27,8 +27,10 @@
 ```
 UI组件和容器组件关联
 容器组件通过props传递store
+store可以Provider传入store
 UI组件容器组件关联
 容器组件传递props到ui组件(mapStateToProps, mapDispatchToProps)
+mapDispatchToProps可以传actions对象
 ```
 
 
